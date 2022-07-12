@@ -1,0 +1,17 @@
+<div class="title">
+	{{cat.category}}
+</div>
+<div class="card">
+	<div class="img">
+		<img src={{cat.image}} style="width:100%">
+	</div>
+	<div class="sub">
+		<div class="subcard" *ngFor="let c of cat.subcategory; index as i;">
+			<div style="text-align:center;" (click)='checkout(i)'>
+				<img src={{c.img}} class="subcatimg">
+				<br>
+				{{c.name}}
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,81 @@
+<div class='background'>
+    <app-navbar></app-navbar>
+    <div class='main'>
+        <div class="left">
+            <div class="title">{{subcat.name}} </div><br>
+            <span *ngFor="let cat of subcat.type; index as i;" class="subtitle">
+				<span *ngIf='i==0' style='margin-left:5%;'>
+                    {{cat.name}}
+                </span>
+                <span *ngIf='i<n-1 && i>0'>
+                    , {{cat.name}}
+                </span>
+                <span *ngIf='i==n-1'>
+                    and {{cat.name}}
+                </span>
+            </span>
+                <div class="inclusion">
+                    <div *ngFor="let cat of subcat.inclusion; index as i;" class="flex">
+                        <div class="'icon">
+                            <i class="fa-solid fa-circle-check" style="color:rgb(77, 224, 77);margin-left:5%"></i>
+                        </div>
+
+                        <div class="content">{{cat}}</div><br>
+                    </div>
+                </div>
+                
+                <div class="exclusion">
+                    <div *ngFor="let cat of subcat.exclusion; index as i;" class="flex" >
+                        <i class="fa-solid fa-circle-xmark" style="color:red;"></i> <div class="content">{{cat}}</div><br>
+                    </div>
+                </div>
+
+        </div>
+        <div class="right">
+                <div class="ptitle">Price Details</div>
+                
+                <div class="units type" >
+                    Select the type of  service
+                    <div> 
+                        <span *ngFor="let cat of subcat.type; index as i;">
+                            <span *ngIf='selected==i'>       
+                                <button (click)="select(i)" [@type]="'on'">{{cat.name}}</button>
+                            </span>
+                            <span *ngIf='selected!=i'>
+                                <button (click)="select(i)" [@type]="'off'">{{cat.name}}</button>
+                            </span>    
+                        </span>
+                    </div>
+                    
+                </div>
+                <hr>
+
+                <div class="units flex">
+                    <div style="width: 75%; margin-left:5%;">Units/No of persons</div>
+                    <div style="width: 15;">
+                        <i class="fa-solid fa-circle-minus incdec" (click)="unitchange(-1)"></i>
+                        {{unit}}
+                        <i class="fa-solid fa-circle-plus incdec" (click)="unitchange(1)"></i>
+                        
+                    </div>
+                        
+                </div>
+                <hr>
+                <div class="units type subtotal">
+                    Subtotal
+
+                    <div style="font-size:1.3rem;margin-bottom:3%">
+                        {{cost}} {{extra}}
+                    </div>
+                     
+                </div>
+                <hr>
+                <div class="flex button">
+                    <button (click)="submit()"> Continue</button>
+                </div>
+        </div>
+        
+           
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+.card{
+	background-color:white;
+	display:flex;
+	border:1px solid lightgray;
+	margin-top:2%;
+}
+.img{
+	width:20%;
+}
+.sub{
+	width:80%;
+	margin:0px;
+}
+.title{
+	font-size:1.7rem;
+	margin-top:8%;
+}
+
+.subcard{
+	float:left;
+	width:24.85%;
+	height:50%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:row;
+	border:0.5px #e6e5e3 solid;
+	cursor:pointer;
+}
+.subcatimg{
+	border-radius:100%;
+}

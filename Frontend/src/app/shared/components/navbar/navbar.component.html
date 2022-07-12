@@ -1,0 +1,35 @@
+<nav>
+	<a href="/home"><img src="/assets/images/icon.png" class= "icon"></a>
+
+	<a href="/signup/pro" class="register">Register as a professional</a>
+	<span class="login" (click)="togglehelp()">Helpdesk</span>
+	<span *ngIf='name==""' class="login" (click)=reverse()>Login/Sign up</span>
+		
+	<span *ngIf='name !=""' class="login"><a href="/profile">{{name}}</a></span>
+	<span *ngIf='name!=""' style="margin-left:5%;cursor:pointer;" class="login" (click)=logout()>Log out</span>
+	
+</nav>
+<div class="log"  [@login]="login" >
+	<div style="width:100%;display:flex;flex-direction:row">
+		<div class="logintitle">
+			Login
+		</div>
+		<div class="close"(click)=off()>x</div>
+	</div>
+	<hr>
+	<div class="input">
+	
+		<input type="text" [(ngModel)]="email"
+			   placeholder="Email"><br>
+		<input type="pass" [(ngModel)]="pass" 
+			   placeholder="Password"><br>
+		<div class="error">{{err}}</div>
+		<button class="submit" type="submit" (click)=submit()>Log In
+		</button>
+	</div>
+	<div class="end">
+		<a href="/signup/user">Sign Up</a>
+	</div>
+</div>
+
+<div [@login]="help" class="help"> <app-help (out)="help='off'"></app-help> </div>

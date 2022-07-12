@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+	<div class="form">
+		<div class="title">Register as a partner <hr></div>
+		
+			
+		
+		<label>Name</label><br>
+		<input type="text" placeholder="Enter Your Name" required 
+			   [(ngModel)]="name"> <br>
+		
+		<label>Email Id</label><br>
+		<input type="text" placeholder="Enter Your Email Id" required 
+			[(ngModel)]="email"   > <br>
+		<div style="margin-left:5%;color:red"></div>
+		
+		<label>Password</label><br>
+		<input type="text" placeholder="Enter Your Password" required 
+			 [(ngModel)]="pass" > <br>
+		
+		<label>Phone Number</label><br>
+		<input type = "number" placeholder="Enter Your Phone Number" 
+			   required [(ngModel)]="ph"> <br>
+		
+		<label>City</label><br>
+		<input type = "text" placeholder="Enter Your City Name" 
+			   required [(ngModel)]="city"> <br>
+		
+		<label>Address</label><br>
+		<input type = "text" placeholder="Enter Your Address" 
+			   required [(ngModel)]="address"> <br>
+		
+		<label>Services you offer (Select Category and subcategory)</label><br>
+			<div *ngFor="let cat of category; index as i;" style='display:flex;align-items:center;'>
+				<input type="checkbox" name={{cat.category}} (click)=catselcted(i) class='checkbox'>
+				<label for={{cat.category}} class='checkbox checkbox-label' style='font-size: 1.2rem;' >{{cat.category}}</label>
+			</div>
+			<div *ngFor="let cat of category; index as i;">
+				<div *ngIf='cat.checked==true'>
+					<label>{{cat.category}}</label>
+					<div *ngFor="let c of cat.subcategory; index as j;" style='display:flex;align-items:center;'>
+						<input type="checkbox" name={{c.name}} (click)=subcatselected(i,j) class='checkbox'>
+						<label for={{c.name}} class='checkbox checkbox-label'>{{c.name}}</label>
+					</div>
+				</div>
+			</div>
+		
+		<label>Your service address</label><br>
+		<div style='display:flex;justify-content:center'>
+			<button class='btnmap' (click)=setmapstate()>Select location</button> <br>
+		</div>
+		
+		<label>Your vaccination status</label><br>
+		<div style='display:flex;align-items:center;'>
+			<input type="radio" name="vaccine"  class="checkbox" (click)="selectvac(1)">
+			<label for="vaccine" class="checkbox checkbox-label">Single dose</label><br>
+			<input type="radio"  name="vaccine"  class="checkbox" (click)="selectvac(2)">
+			<label for="vaccine" class="checkbox checkbox-label">Double dose</label><br>
+			<input type="radio"  name="vaccine"  class="checkbox" (click)="selectvac(3)">
+			<label for="vaccine" class="checkbox checkbox-label">Double dose+(Booster)</label> <br>
+			<input type="radio" id="html" name="vaccine"  class="checkbox" (click)="selectvac(0)">
+			<label for="vaccine" class="checkbox checkbox-label">Not taken yet</label><br>
+		</div>
+
+		{{err}}
+		<button class="submit" type="submit" (click)=submit()>Sign Up
+		</button>
+		
+	</div>
+	<app-map [center]='position' [type]="mapinp" (out)=outmap($event) [@map]="mapstate" ></app-map>
+</div>

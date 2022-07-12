@@ -1,0 +1,14 @@
+<div class="container">
+    <div id="map"></div>
+    <div style='text-align: center;' *ngIf="type==true">
+        Select location on the map using the marker.
+        Double click to move the marker to the center of the page 
+    </div>
+    
+    <div style='text-align: center;' *ngIf="type==false">
+        Marker shows the location of the customer. 
+    </div>
+    <div class='button'>
+        <button class='submit' (click)=submit() *ngIf="type==true">Submit</button> <button class='close' (click)=cancel()>Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="date">
+        <div class="title">
+            Please select the date of service
+        </div>    
+        <div class='dcont'>
+            <div  *ngFor="let d of date; index as i;" class="da" style="padding:0px">
+                <div *ngIf='adate==i' [@datepay]="'on'"(click)='selectdate(i)' style="width:100%;padding:1%">
+                    <span class="month">{{d.month}}</span><br>
+                    <span class='day'>{{d.day}}</span><br>
+                    <span class="month">{{d.week}}</span>
+                </div>
+                <div *ngIf='adate!=i' [@datepay]="'off'"(click)='selectdate(i)'>
+                    <span class="month">{{d.month}}</span><br>
+                    <span class='day'>{{d.day}}</span><br>
+                    <span class="month">{{d.week}}</span>
+                </div>    
+            </div>
+        </div>
+    </div>
+
+    <div class="date dtime">
+        <div class="title">
+            Select time for service
+        </div>
+        <div class='timing'>
+            <div class="subtitle">
+                Morning           
+            </div>
+            <div class="tbutton">
+                <span *ngIf='atime==0'>
+                <button class="time" [@time]="'on'" (click)="selecttime(0)">9:00 AM - 12:00 PM</button>
+                </span>
+                <span *ngIf='atime!=0' >
+                    <button class="time" [@time]="'off'" (click)="selecttime(0)">9:00 AM - 12:00 PM</button>
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class='timing'>
+            <div class="subtitle">
+                Afternoon
+            </div>
+            <div class="tbutton">
+                <span *ngIf='atime==1'>
+                    <button class="time" [@time]="'on'" (click)="selecttime(1)">12:00 PM - 3:00PM</button>
+                </span>
+                <span *ngIf='atime!=1' >
+                    <button class="time" [@time]="'off'" (click)="selecttime(1)">12:00 PM - 3:00PM</button>
+                </span>
+                <span *ngIf='atime==2'>
+                    <button class="time" [@time]="'on'" (click)="selecttime(2)">3:00 PM - 6:00PM</button>
+                </span>
+                <span *ngIf='atime!=2' >
+                    <button class="time" [@time]="'off'" (click)="selecttime(2)">3:00 PM - 6:00PM</button>
+                </span>
+
+            </div>
+        </div>
+        <hr>
+        <div class='timing'>
+            <div class="subtitle">
+                Evening
+            </div>
+            <div class="tbutton">
+                <span *ngIf='atime==3'>
+                    <button class="time" [@time]="'on'" (click)="selecttime(3)">6:00 PM - 9:00PM</button>
+                </span>
+                <span *ngIf='atime!=3' >
+                    <button class="time" [@time]="'off'" (click)="selecttime(3)">6:00 PM - 9:00PM</button>
+                </span>
+            </div>
+        </div>
+        <hr>   
+    </div>
+
+    <div class="date dtime">
+        <div class="title">
+            Select payment option for service
+        </div>
+    
+        <div class="tbutton timing">
+            <span *ngIf='apay==0' >
+                <button class="time" [@datepay]="'on'" (click)="selectpay(0)">Pay now</button>
+            </span>
+            <span *ngIf='apay!=0' >
+                <button class="time" [@datepay]="'off'" (click)="selectpay(0)">Pay now</button>
+            </span>
+            <span *ngIf='apay!=0' >
+            <button class="time" [@datepay]="'on'" (click)="selectpay(1)">Pay to serviceman </button>
+            </span>
+            <span *ngIf='apay==0' >
+                <button class="time" [@datepay]="'off'" (click)="selectpay(1)">Pay to serviceman </button>
+            </span>
+        </div>
+    
+        
+    </div>
+
+
+    <div class="flex button">
+        <button (click)="book()"> Continue</button>
+    </div>
+</div>
+

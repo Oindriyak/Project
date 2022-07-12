@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+	<div class="form">
+		<div class="title">Sign up to use our services <hr></div>
+		
+			
+		
+		<label>Name</label><br>
+		<input type="text" placeholder="Enter Your Name" required 
+			   [(ngModel)]="name"> <br>
+		<label>City</label><br>
+		<input type="text" placeholder="Enter Your Default City" required 
+				[(ngModel)]="city"> <br>
+
+			   <label>Email Id</label><br>
+		<input type="text" placeholder="Enter Your Email Id" required 
+			[(ngModel)]="email"   > <br>
+		<div style="margin-left:5%;color:red">{{err}}</div>
+		
+		<label>Password</label><br>
+		<input type="text" placeholder="Enter Your Password" required 
+			 [(ngModel)]="pass" > <br>
+		
+		<label>Phone Number</label><br>
+		<input type = "number" placeholder="Enter Your Phone Number" 
+			   required [(ngModel)]="ph"> <br>
+		
+		<button class="submit" type="submit" (click)=submit()>Sign Up
+		</button>
+
+		
+	</div>
+</div>

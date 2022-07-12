@@ -1,0 +1,109 @@
+.container{
+    margin-left: 10%;
+    margin-right: 10%;
+    
+}
+
+.title{
+    text-align: center;
+	font-size: 2rem;
+  
+}
+
+.flex{
+    display: flex;
+}
+
+.date{
+    background-color: white;
+    margin-top: 10%;
+    max-width:100%;
+    padding-bottom: 3%;
+    padding-top: 1.5%;
+}
+.dcont{
+    display:flex;
+    flex-direction: row;
+    margin-top:3%;
+    width:100%;
+    justify-content: space-evenly;
+    
+}
+.da{
+    border:red solid ;
+    border-radius: 5%;
+    color: red;
+    text-align: center;
+    width:5%;
+    padding:0.5%;
+  
+    
+}
+.month{
+    font-size: 1.2rem ;
+}
+.day{
+    font-size: 2rem;
+}
+
+button{
+    margin:1vw;
+    padding-right:1vw;
+    padding-left:1vw;
+	background-color: white;
+    padding-top:10px;
+    padding-bottom:10px;
+    border:1px solid red;
+    border-radius: 35px;
+    cursor:pointer;
+	margin-top:3vh;
+	font-size: 1.1rem;
+}
+
+.tbutton{
+	justify-content: center;
+	color:red;
+	margin-bottom: 0px;
+}
+.tbutton button{
+	margin-top:3vh;
+	background-color: red;
+	border-color: red;
+	color: white;
+    margin-left: 0px;
+    margin-right: 3vw;
+	margin-bottom:3vh;
+    border-radius: 5px;
+}
+.dtime{
+    padding-left: 0%;
+    
+}
+.subtitle{
+    margin-top: 3%;
+    font-size: 1.4rem;
+}
+.timing{
+    margin-left: 5%;
+}
+hr{
+    color: whitesmoke;
+    opacity: 0.3;
+}
+
+.option{
+	margin-left:5%;
+	margin-top: 20%;
+	font-size: 1.3rem;
+}
+.button{
+    border-radius: 36px;
+    justify-content: center;
+}
+.button button{
+    border-color: rgb(46, 248, 80);
+}
+.button button:hover{
+    background-color: rgb(46, 248, 80);
+    color: azure;
+}

@@ -1,0 +1,143 @@
+<div>
+	<app-navbar style='position:-webkit-sticky;position:sticky'></app-navbar>
+
+	
+	<header class="background container">
+		<div class="title">Profile Details</div>
+        <hr style="color: azure;">
+        <div class="subtitle"><strong>Name: </strong>  {{name}}</div>
+		<div class="subtitle"><strong>Phone number: </strong>   {{detail.ph}}</div>	
+        <div *ngIf="type=='pro'">
+            <div class="subtitle"> <strong> Average Rating: </strong>{{detail.averagerating}}</div>
+            <div class="subtitle"><strong>City:</strong> {{detail.city}}</div>
+            <div class="subtitle"><strong>Address:</strong> {{detail.address}} </div>
+            <div class="subtitle"><strong>Services: </strong>
+                <span *ngFor="let cat of detail.subcategory; index as i" >
+                    <span *ngIf="i==0">{{cat}}</span>
+                    
+                    <span *ngIf="i!=0"> , {{cat}}</span>  
+                </span>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="background container" *ngIf="type!='pro'">
+		<div class="title">Service History</div>
+        <hr style="color: azure;">
+        <div *ngFor="let o of order;index as i" style="margin-bottom:5%">
+            
+            <div class="subtitle"> <strong>Service name:</strong>{{o.subcat}} </div>
+            <div class="subtitle"> <strong>Service type:</strong> {{o.type}} </div>
+            <div class="subtitle"> <strong>Price:</strong>{{o.price}} </div>
+            <div class="subtitle" *ngIf="o.status=='booked'"> <strong>Service Status:</strong>We are looking for professional</div>
+            <div class="subtitle" *ngIf="o.status=='assigned'"> <strong>Service Status:</strong>Professional has ben assigned</div>
+            <div class="subtitle" *ngIf="o.status=='completed'"> 
+                <strong>Service Status:</strong>Service completed <br>
+                <strong>Rate your service between 1 and 5</strong>
+                <input type="number" min="0" max="5" [(ngModel)]="rating[i]"><br>                
+                <strong>Review your service</strong>
+                <input type="text" min="0" max="5" [(ngModel)]="review[i]"><br>
+                 <button class="submit" (click)=rateandreview(i)> Submit rating and review</button>   
+            </div>
+            
+            <hr>
+		    
+            <div class="subtitle"> <strong></strong> </div>
+        </div>
+
+    </div>
+    
+    <div class="background container" *ngIf="type=='pro'">
+		<div class="title">New service offers</div>
+        <hr style="color: azure;">
+        <div *ngFor="let o of request;index as i">
+            
+                <div class="subtitle"> <strong>Service name:</strong>{{o.subcat}} </div>
+                <div class="subtitle"> <strong>Service type:</strong>{{o.type}} </div>
+                <div class="subtitle"> 
+                    <strong>City:</strong>{{o.city}} <br>
+                    <strong>Customer Name:</strong>
+                    {{o.cname}} <br>                
+                    <strong>Phone number:</strong>{{ph}} <br>
+                    <strong>Service Date:</strong>{{o.date}}<br>
+                    <strong>Service Time:</strong>{{o.time}}<br>
+                    <strong>Price:</strong>{{o.price}}<br>
+                    <strong>Payment Status:</strong><span *ngIf ="o.paymentid =='N A'"> Pay to serviceman </span>
+                    <span *ngIf ="o.paymentid !='N A'"> Paid online (Extras not applied) </span><br>
+                    <strong>Customer address:</strong> <button class="abutton" (click)="map(i,'book')">View customer address</button> <br>
+                    
+                    <button  class="abutton" (click)="accept(i,'assigned')">Accept offer</button>
+            
+                </div>    
+                <hr>
+		    
+            <div class="subtitle"> <strong></strong> </div>
+        </div>
+
+    </div>
+
+    
+
+
+    <div class="background container" *ngIf="type=='pro'">
+		<div class="title">Current Services</div>
+        <hr style="color: azure;">
+        <div *ngFor="let o of porder;index as i">
+            <div *ngIf="o.status=='assigned'">
+                <div class="subtitle"> <strong>Service name:</strong>{{o.subcat}} </div>
+                <div class="subtitle"> <strong>Service type:</strong>{{o.type}} </div>    
+                <div class="subtitle">
+                    <strong>Customer name:</strong>
+                        {{o.cname}} <br>
+                        <strong>Service Date:</strong>{{o.date}}<br>
+                        <strong>Service Time:</strong>{{o.time}}<br>
+                        </div>
+                <div class="subtitle">    <strong>City:</strong>{{o.city}} </div>     
+                <div class="subtitle">    <strong>Phone number:</strong>{{ph}} </div>
+                <div class="subtitle">    <strong>Customer address:</strong> <button class="abutton" (click)="map(i,'assign')">View customer address</button> </div>
+                    <div class="subtitle"><strong>Current service completed:</strong> <button  class="abutton" (click)="accept(i,'completed')">Service completed</button> </div>
+                <hr>
+            </div>    
+                
+		    
+            
+        </div>
+
+    </div>
+
+    <div class="background container" *ngIf="type=='pro'">
+		<div class="title">Completed Service History</div>
+        <hr style="color: azure;">
+        <div *ngFor="let o of porder;index as i">
+            <div *ngIf="o.status=='completed'">
+                <div class="subtitle"> <strong>Service name:</strong>{{o.subcat}} </div>
+                <div class="subtitle"> <strong>Service type:</strong> {{o.type}} </div>
+                <div class="subtitle" *ngIf="o.status=='completed'"> 
+                    <strong>Customer name:</strong>
+                    {{o.cname}} <br>
+                    <strong>City:</strong>{{o.city}} <br>
+                    <strong>Service Status:</strong>Service completed <br>
+                    <strong>Service Date:</strong>{{o.date}}<br>
+                    <strong>Service Time:</strong>{{o.time}}<br>
+                    <strong>Service rating</strong>
+                    {{o.rating}}      <br>
+                              
+                    <strong>Service review</strong>
+                    {{o.review}}   <br>
+                    <hr>
+                </div>
+                
+            </div>    
+                
+		    
+            <div class="subtitle"> <strong></strong> </div>
+        </div>
+
+    </div>
+
+
+    <app-map [center]='position' [type]="mapinp" (out)=outmap($event) [@map]="mapstate" ></app-map>
+
+</div>
+

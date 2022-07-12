@@ -1,0 +1,45 @@
+<div class="background">
+	
+	<app-navbar style='position:-webkit-sticky;position:sticky'></app-navbar>
+	<img style="width:100%;"src="https://d2vj71og9gdu4k.cloudfront.net/ADMIN_IMAGES/1588761269.jpg">
+	
+	<div class="container">
+		<div class='category '>
+			<div class="title">
+				Enter your city and location
+			</div>
+			<div class='location'>
+				<button class='btnmap' (click)=setmapstate()>Select location</button>
+			
+			
+				<label>City</label>
+				<input type='text'[(ngModel)]='city' placeholder="City">
+				<button type="submit" class="submit" (click)="setcity()">Submit city and location</button>
+			</div>
+		</div>
+		<app-map [center]='position' [type]="mapinp" (out)=outmap($event) [@map]="mapstate" ></app-map>
+
+		<div class="category">
+			<div class="title">
+				The services we offer
+			</div>
+			<div class="ci">
+				<div *ngFor="let cat of category; index as i;">
+					<a style="cursor:pointer">
+					<img src={{cat.icon}} class="catimg" (click)="move($event,i)" >{{cat.category}}</a>
+					</div>
+			</div>	
+		</div>
+
+		<div>
+		
+		</div>
+		<div *ngFor="let cat of category; index as i;">
+			<div id="{{'cat'+ i}}">
+				<app-category [cat]=cat ></app-category>
+			</div>
+		</div>
+
+	</div>
+</div>
+

@@ -1,0 +1,40 @@
+
+<div class="help" >
+  <div style="display:flex">
+    <div class="title">Help desk</div>
+    <div style="width:4%; font-size:1.2rem;background-color: #88d67e;"(click)="close()" >X</div>
+    </div>
+    <div  style="justify-items:center">
+      <span *ngIf="voiceActiveSectionDisabled; else voicesection;"> </span>
+      <button type="button" (click)="startVoiceRecognition()">Ask a question</button>
+      <button (click)="closeVoiceRecognition()">Cancel recording</button>  
+    </div>
+    <hr>
+    <div class="container">
+      <ng-template #voicesection>
+        <ng-container *ngIf="!voiceActiveSectionError; else failure">
+          <ng-container *ngIf="voiceText; else start" style="text-align:right;">
+              
+          </ng-container>
+          <ng-template #start>
+            <ng-container
+              *ngIf="voiceActiveSectionListening; else beginning">
+              <span>Listening...</span>
+            </ng-container>
+            <ng-template #beginning>
+              <span>Start talking...</span>
+            </ng-template>
+          </ng-template>
+        </ng-container>
+        <ng-template #failure>
+          <span>Didn't catch that</span>
+        </ng-template>
+        
+      </ng-template>
+      
+      <div class="question" style="margin-top:1%;">Your question:{{voiceText}}</div>
+      <div style="margin-top:1%;" class="answer">
+        {{answer}}        
+      </div>
+    </div>
+  </div>
